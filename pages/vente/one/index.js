@@ -75,16 +75,15 @@ function Index(props) {
                                 <span className="visually-hidden">Next</span>
                             </button>
                         </div>
-
                     </div>
                     <div className="col-12 col-lg-6 mt-5 pt-1 d-flex flex-column">
                         <div className="mt-5 p-3 border border-2 border-info">
                             <h3 className="mb-3">Contact</h3>
                             <div className="row">
-                                <p className="col-6">Mario letti</p>
-                                <p className="col-6"> mario@gmail.com</p>
-                                <p className="col-6">02/333 33 33</p>
-                                <p className="col-6">facebook</p>
+                                <p className="col-6"><i className="fas fa-user me-2"/>Mario letti</p>
+                                <p className="col-6"><i className="fas fa-at me-2"/>mario@gmail.com</p>
+                                <p className="col-6"><i className="fas fa-phone me-2"/>02/333 33 33</p>
+                                <p className="col-6"><i className="fab fa-facebook me-2"/>facebook</p>
                             </div>
                         </div>
                         <div className="mt-5 px-3">
