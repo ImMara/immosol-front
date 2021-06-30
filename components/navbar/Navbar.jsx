@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 function Navbar(props) {
     return (
@@ -14,16 +15,24 @@ function Navbar(props) {
                         <a className="navbar-brand" href="#">Hidden brand</a>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/">Home</a>
+                                <Link href="/">
+                                    <a className="nav-link active" aria-current="page" >Home</a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/vente">Vente</a>
+                                <Link href="/vente" passHref={true}>
+                                    <a className="nav-link" >Vente</a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/location">Location</a>
+                                <Link href="/location" passHref={true}>
+                                    <a className="nav-link" href="/location">Location</a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/region">Région</a>
+                                <Link href="/region">
+                                    <a className="nav-link" >Région</a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

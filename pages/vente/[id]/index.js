@@ -3,6 +3,7 @@ import Head from "../../../components/head/Head";
 import Carousel from "../../../components/carousel/Carousel";
 import {useRouter} from "next/router";
 import {getVente} from "../../../actions";
+import Link from 'next/link';
 
 function Index(props) {
 
@@ -64,27 +65,42 @@ function Index(props) {
                         </div>
 
                         <div className="row my-5 mx-3">
-
-                            <div className={"col-6 text-secondary"}>
-                                <i className="fas fa-bath me-2"/>
-                                <span>{ vente.details.bathroom } salle de bain</span>
-                            </div>
-
-                            <div className={"col-6 text-secondary"}>
-                                <i className="fas fa-bed me-2"/>
-                                <span>{ vente.details.bedroom} chambre</span>
-                            </div>
-
-                            <div className="col-6 text-secondary">
-                                <i className="fas fa-city me-2"/>
-                                <span>{ vente.details.type }</span>
-                            </div>
-
-                            <div className="col-6 text-secondary">
-                                <i className="fas fa-border-style me-2"/>
-                                <span>{vente.details.surface} m</span>
-                            </div>
-
+                            {
+                                vente.details.bathroom &&
+                                (
+                                    <div className={"col-6 text-secondary"}>
+                                        <i className="fas fa-bath me-2"/>
+                                        <span>{ vente.details.bathroom } salle de bain</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                vente.details.bedroom &&
+                                (
+                                    <div className={"col-6 text-secondary"}>
+                                        <i className="fas fa-bed me-2"/>
+                                        <span>{ vente.details.bedroom } chambre</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                vente.details.type &&
+                                (
+                                    <div className="col-6 text-secondary">
+                                        <i className="fas fa-city me-2"/>
+                                        <span>{ vente.details.type }</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                vente.details.surface &&
+                                (
+                                    <div className="col-6 text-secondary">
+                                        <i className="fas fa-border-style me-2"/>
+                                        <span>{ vente.details.surface } m</span>
+                                    </div>
+                                )
+                            }
                         </div>
 
                         <Carousel data={vente.gallery} name={"ventes"}/>
@@ -98,9 +114,15 @@ function Index(props) {
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>{vente.contact.name}</p>
                                 <p className="col-6"><i className="fas fa-at me-2"/>{vente.contact.email}</p>
-                                <p className="col-6"><i className="fas fa-phone me-2"/>{vente.contact.phone}</p>
                                 {
-                                    vente.contact.facebook&& (
+                                    vente.contact.phone &&
+                                    (
+                                        <p className="col-6"><i className="fas fa-phone me-2"/>{vente.contact.phone}</p>
+                                    )
+                                }
+                                {
+                                    vente.contact.facebook&&
+                                    (
                                         <p className="col-6"><i className="fab fa-facebook me-2"/>{vente.contact.facebook}</p>
                                     )
                                 }
@@ -109,19 +131,26 @@ function Index(props) {
 
                         <div className="mt-5 px-3">
                             <h5 >Description : </h5>
-                            <p>{vente.description}</p>
+                            <p>{ vente.description }</p>
                         </div>
-
-                        <div className="mt-5 px-3">
-                            <h5>Prix :</h5>
-                            <h5 className="mt-3 text-info mx-3"><strong>{vente.cost}$</strong></h5>
-                        </div>
-
+                        {
+                            vente.cost &&
+                            (
+                                <div className="mt-5 px-3">
+                                    <h5>Prix :</h5>
+                                    <h5 className="mt-3 text-info mx-3"><strong>{ vente.cost }$</strong></h5>
+                                </div>
+                            )
+                        }
                     </div>
 
                     <div className="d-flex py-3">
-                        <a className="btn btn-info text-white" href="/vente">Retour</a>
-                        <a className="btn btn-secondary ms-2" href="/">Home</a>
+                        <Link href="/vente">
+                            <a className="btn btn-info text-white" >Retour</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="btn btn-secondary ms-2" >Home</a>
+                        </Link>
                     </div>
 
                 </div>

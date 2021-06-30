@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from "../../components/head/Head";
 import Cards from "../../components/cards/Cards";
 import {getLocations} from "../../actions";
+import Link from "next/link";
 
 function Index(props) {
+
+    const [locations,setLocation] = useState(props.locations)
+
     const [search,setSearch] = useState("")
 
     const handleChange = (event) =>{
@@ -14,7 +18,7 @@ function Index(props) {
     }
 
     const filtered = () =>{
-        return props.locations.filter(location => location.title.toLowerCase().includes(search))
+        return locations.filter(location => location.title.toLowerCase().includes(search))
     }
 
     return (
@@ -43,9 +47,11 @@ function Index(props) {
                 <div className="row justify-content-center g-0">
                     {filtered().map(l => (
                         <div className="card col-10 col-md-5 col-xl-3 m-3" style={{height:"350px"}}>
-                            <a className={"text-decoration-none"} href={"/location/"+l._id}>
-                                <Cards data={l} name={"locations"}/>
-                            </a>
+                            <Link href={"/location/"+l._id}>
+                                <a className={"text-decoration-none"} >
+                                    <Cards data={l} name={"locations"}/>
+                                </a>
+                            </Link>
                         </div>
                     ))}
                 </div>

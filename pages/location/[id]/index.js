@@ -3,6 +3,7 @@ import Head from "../../../components/head/Head";
 import Carousel from "../../../components/carousel/Carousel";
 import {getLocation} from "../../../actions";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 function Index(props) {
     const router = useRouter()
@@ -66,27 +67,42 @@ function Index(props) {
                         </div>
 
                         <div className="row my-5 mx-3">
-
-                            <div className={"col-6 text-secondary"}>
-                                <i className="fas fa-bath me-2"/>
-                                <span>{location.details.bathroom} salle de bain</span>
-                            </div>
-
-                            <div className={"col-6 text-secondary"}>
-                                <i className="fas fa-bed me-2"/>
-                                <span>{location.details.bedroom} chambre</span>
-                            </div>
-
-                            <div className="col-6 text-secondary">
-                                <i className="fas fa-city me-2"/>
-                                <span>{location.details.type}</span>
-                            </div>
-
-                            <div className="col-6 text-secondary">
-                                <i className="fas fa-border-style me-2"/>
-                                <span>{location.details.surface} m</span>
-                            </div>
-
+                            {
+                                location.details.bathroom &&
+                                (
+                                    <div className={"col-6 text-secondary"}>
+                                        <i className="fas fa-bath me-2"/>
+                                        <span>{location.details.bathroom} salle de bain</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                location.details.bedroom &&
+                                (
+                                    <div className={"col-6 text-secondary"}>
+                                        <i className="fas fa-bed me-2"/>
+                                        <span>{location.details.bedroom} chambre</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                location.details.type &&
+                                (
+                                    <div className="col-6 text-secondary">
+                                        <i className="fas fa-city me-2"/>
+                                        <span>{location.details.type}</span>
+                                    </div>
+                                )
+                            }
+                            {
+                                location.details.surface &&
+                                (
+                                    <div className="col-6 text-secondary">
+                                        <i className="fas fa-border-style me-2"/>
+                                        <span>{location.details.surface} m</span>
+                                    </div>
+                                )
+                            }
                         </div>
 
                         <Carousel data={location.gallery} name={"locations"}/>
@@ -100,7 +116,12 @@ function Index(props) {
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>{location.contact.name}</p>
                                 <p className="col-6"><i className="fas fa-at me-2"/>{location.contact.email}</p>
-                                <p className="col-6"><i className="fas fa-phone me-2"/>{location.contact.phone}</p>
+                                {
+                                    location.contact.phone &&
+                                    (
+                                        <p className="col-6"><i className="fas fa-phone me-2"/>{location.contact.phone}</p>
+                                    )
+                                }
                                 {
                                     location.contact.facebook && (
                                         <p className="col-6"><i
@@ -114,17 +135,24 @@ function Index(props) {
                             <h5>Description : </h5>
                             <p>{location.description}</p>
                         </div>
-
-                        <div className="mt-5 px-3">
-                            <h5>Prix :</h5>
-                            <h5 className="mt-3 text-info mx-3"><strong>{location.cost}$</strong></h5>
-                        </div>
-
+                        {
+                            location.details.cost&&
+                            (
+                                <div className="mt-5 px-3">
+                                    <h5>Prix :</h5>
+                                    <h5 className="mt-3 text-info mx-3"><strong>{location.cost}$</strong></h5>
+                                </div>
+                            )
+                        }
                     </div>
 
                     <div className="d-flex py-3">
-                        <a className="btn btn-info text-white" href="/vente">Retour</a>
-                        <a className="btn btn-secondary ms-2" href="/">Home</a>
+                        <Link href="/vente">
+                            <a className="btn btn-info text-white" >Retour</a>
+                        </Link>
+                        <Link href="/">
+                            <a className="btn btn-secondary ms-2" >Home</a>
+                        </Link>
                     </div>
 
                 </div>

@@ -7,59 +7,81 @@ function Cards(props) {
 
     return (
         <>
-                <div className={"position-relative"}>
+            <div className={"position-relative"}>
 
-                    <div className={"position-absolute top-0 start-0 d-flex"}>
-                        {
-                            vente.featured && (
-                                <span className={"badge bg-danger rounded-0"}>Featured</span>
-                            )
-                        }
-                        {
-                            vente.sold ==='Vendus' ? (
-                                <span className="badge bg-danger rounded-0">Vendus</span>
-                            ):(
-                                <span className="badge bg-info rounded-0">Disponible</span>
-                            )
-                        }
-                    </div>
-
-                    <img src={`http://vps-447d73c6.vps.ovh.net/images/${name}/gallery/`+vente.gallery[vente.image]} style={{height:"150px"}} className="card-img-top object-cover" alt="..."/>
-
+                <div className={"position-absolute top-0 start-0 d-flex"}>
+                    {
+                        vente.featured && (
+                            <span className={"badge bg-danger rounded-0"}>Featured</span>
+                        )
+                    }
+                    {
+                        vente.sold === 'Vendus' ? (
+                            <span className="badge bg-danger rounded-0">Vendus</span>
+                        ) : (
+                            <span className="badge bg-info rounded-0">Disponible</span>
+                        )
+                    }
                 </div>
-                <div className="card-body">
 
-                    <h5 className="card-title text-info">{vente.title}</h5>
+                <img src={`http://vps-447d73c6.vps.ovh.net/images/${name}/gallery/` + vente.gallery[vente.image]}
+                     style={{height: "150px"}} className="card-img-top object-cover" alt="..."/>
 
-                    <div className={"row my-2"}>
+            </div>
+            <div className="card-body">
 
-                        <div className={"col-6 text-secondary"}>
-                            <i className="fas fa-bath me-1"/>
-                            <span style={{fontSize:"14px"}}>{vente.details.bathroom} bathroom</span>
-                        </div>
+                <h5 className="card-title text-info">{vente.title}</h5>
 
-                        <div className={"col-6 text-secondary"}>
-                            <i className="fas fa-bed me-1"/>
-                            <span style={{fontSize:"14px"}}>{ vente.details.bedroom===1 ? vente.details.bedroom+' chambre' : vente.details.bedroom+' chambres' }</span>
-                        </div>
-
-                        <div className="col-6 text-secondary">
-                            <i className="fas fa-city me-1"/>
-                            <span style={{fontSize:"14px"}}>{ vente.details.type}</span>
-                        </div>
-
-                        <div className="col-6 text-secondary">
-                            <i className="fas fa-border-style me-1"/>
-                            <span style={{fontSize:"14px"}}>{ vente.details.surface }m²</span>
-                        </div>
-
+                <div className={"row my-2"}>
+                    {
+                        vente.details.bathroom &&
+                        (
+                            <div className={"col-6 text-secondary"}>
+                                <i className={"fas fa-bath me-1" + !vente.details.bathroom && "opacity-0"}/>
+                                <span
+                                    style={{fontSize: "14px"}}>{vente.details.bathroom && vente.details.bathroom + " salle de bain"}</span>
+                            </div>
+                        )
+                    }
+                    {
+                        vente.details.bedroom &&
+                        (
+                            <div className={"col-6 text-secondary"}>
+                                <i className={"fas fa-bed me-1" + !vente.details.bedroom && "opcaty-0"}/>
+                                <span style={{fontSize:"14px"}}>
+                                {
+                                    vente.details.bedroom === 1 ? vente.details.bedroom + ' chambre' : vente.details.bedroom + ' chambres'
+                                }
+                                </span>
+                            </div>
+                        )
+                    }
+                    <div className="col-6 text-secondary">
+                        <i className="fas fa-city me-1"/>
+                        <span style={{fontSize: "14px"}}>{vente.details.type}</span>
                     </div>
-
-                    <hr/>
-
-                    <p className={"text-info"}><strong>{vente.cost} €</strong></p>
-
+                    {
+                        vente.details.surface &&
+                        (
+                            <div className="col-6 text-secondary">
+                                <i className={"fas fa-border-style me-1" + !vente.details.surface && "opacity-0"}/>
+                                <span style={{fontSize: "14px"}}>{ vente.details.surface + "m²"}</span>
+                            </div>
+                        )
+                    }
                 </div>
+
+                {
+                    vente.cost &&
+                    (
+                        <>
+                            <hr/>
+                            <p className={"text-info"}><strong>{vente.cost + " €"} </strong></p>
+                        </>
+                    )
+                }
+
+            </div>
         </>
     );
 }

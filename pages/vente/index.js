@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Head from "../../components/head/Head";
 import Cards from "../../components/cards/Cards";
+import Link from 'next/link';
 import {getVentes} from "../../actions";
 
 function Index(props) {
@@ -44,9 +45,11 @@ function Index(props) {
                 <div className="row justify-content-center g-0">
                     {filtered().map(v => (
                         <div className="card col-10 col-md-5 col-xl-3 m-3" style={{height:"350px"}}>
-                            <a className={"text-decoration-none"} href={"/vente/"+v._id}>
-                                <Cards data={v} name={"ventes"}/>
-                            </a>
+                            <Link href={"/vente/"+v._id}>
+                                <a className={"text-decoration-none"} >
+                                    <Cards data={v} name={"ventes"}/>
+                                </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
