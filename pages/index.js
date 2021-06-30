@@ -15,7 +15,7 @@ export default function Home() {
                     <div>
                         <div className="input-group flex-column flex-lg-row">
                             <button type="button"
-                                    className="btn btn-dark p-2 p-md-3 px-5 dropdown-toggle dropdown-toggle-split"
+                                    className="btn btn-dark p-2 p-lg-3 px-5 dropdown-toggle dropdown-toggle-split"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className="visually-hidden">Toggle Dropdown</span>
                                 <span className="px-5">maison</span>
@@ -38,7 +38,7 @@ export default function Home() {
                             <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
                             <label className="form-check-label text-easy" htmlFor="inlineCheckbox1">location</label>
                         </div>
-                        <div className="form-check form-check-inline ms-sm-5 ">
+                        <div className="form-check form-check-inline ms-sm-5">
                             <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" />
                             <label className="form-check-label text-easy" htmlFor="inlineCheckbox2">vente</label>
                         </div>
@@ -55,13 +55,13 @@ export default function Home() {
                     <h2>Featured Properties</h2>
                 </div>
                 <div className="card col-12 col-md-6 col-xl-3 m-2">
-                    <Cards/>
+
                 </div>
                 <div className="card col-12 col-md-6 col-xl-3 m-2">
-                    <Cards/>
+
                 </div>
                 <div className="card col-12 col-md-6 col-xl-3 m-2">
-                    <Cards/>
+
                 </div>
             </div>
         </div>

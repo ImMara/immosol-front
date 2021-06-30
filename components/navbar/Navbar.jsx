@@ -20,7 +20,7 @@ function Navbar(props) {
                                 <a className="nav-link" href="/vente">Vente</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/vente/one">one</a>
+                                <a className="nav-link" href="/location">Location</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/region">Région</a>
