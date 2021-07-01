@@ -103,7 +103,7 @@ function Index(props) {
                             }
                         </div>
 
-                        <Carousel data={vente.gallery} name={"ventes"}/>
+                        <Carousel data={vente.gallery} name={"ventes"} size={"350px"}/>
 
                     </div>
 

@@ -10,7 +10,7 @@ function Index(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <Carousel data={props.region[0].gallery} name={"region"}/>
+                        <Carousel data={props.region[0].gallery} name={"region"} size={"50vh"}/>
                     </div>
                     <div className="col-12">
                         <h2 className="my-5">{props.region[0].title}</h2>

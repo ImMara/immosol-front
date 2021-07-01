@@ -32,7 +32,7 @@ body,html{
     z-index: -1;
 }
 .object-cover{
-    object-fit: cover;
+    object-fit:  cover !important;
 }
 .bg-blue-logo{
     color: white;

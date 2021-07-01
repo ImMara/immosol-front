@@ -16,11 +16,11 @@ function Carousel(props) {
                         aria-label="Slide 3"/>
             </div>
 
-            <div className="carousel-inner" style={{height:"350px"}}>
+            <div className="carousel-inner" style={{height:props.size}}>
                 {
                     images.map((i , key) => (
-                        <div className={key === 0 ? "carousel-item active" : "carousel-item"} style={{height:"400px"}}>
-                            <img src={`http://vps-447d73c6.vps.ovh.net/images/${props.name}/gallery/`+i} className={"h-100 object-cover"} alt="..."/>
+                        <div className={key === 0 ? "carousel-item active" : "carousel-item"} style={{height:props.size}}>
+                            <img src={`http://vps-447d73c6.vps.ovh.net/images/${props.name}/gallery/`+i} className={"object-cover h-100 w-100"} alt="..."/>
                         </div>
                     ))
                 }
