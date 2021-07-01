@@ -23,7 +23,7 @@ function Index(props) {
         <>
             <Head title={"immosol/vente"}/>
 
-            <div className={"h-25 w-100 position-relative bg-dark"}>
+            <div className={"h-50 w-100 position-relative bg-dark"}>
                 <img src="/images/vente.jpg" className="w-100 h-100 object-cover" alt=""/>
                 <div className="position-absolute top-50 start-50 text-white text-easy" style={{transform:'translate(-50%,-50%)'}}>
                     <h2>Properties</h2>

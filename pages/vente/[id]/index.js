@@ -15,7 +15,7 @@ function Index(props) {
         <>
             <Head title={`immosol/vente/${vente.title}`}/>
 
-            <div className={"h-25 w-100 position-relative bg-dark"}>
+            <div className={"h-50 w-100 position-relative bg-dark"}>
 
                 <img src={"http://vps-447d73c6.vps.ovh.net/images/ventes/gallery/"+vente.gallery[vente.image]} className={"object-cover h-100 w-100"}  alt="..."/>
 
