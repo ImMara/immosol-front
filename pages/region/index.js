@@ -16,8 +16,9 @@ function Index(props) {
                         <h2 className="my-5">{props.region[0].title}</h2>
                         <p>{props.region[0].description}</p>
                     </div>
-                    <div className="col-12">
-                        <div className="mt-5 p-3 border border-2 border-info">
+                    <hr className={"my-5"}/>
+                    <div className="col-12 text-center">
+                        <div className="p-3">
                             <h3 className="mb-3">Contact</h3>
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>Mario letti</p>

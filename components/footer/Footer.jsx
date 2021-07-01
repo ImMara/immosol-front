@@ -30,14 +30,6 @@ function Footer(props) {
                             href="#!"
                             role="button"
                             data-mdb-ripple-color="dark"
-                        ><i className="fab fa-google"/></a>
-
-
-                        <a
-                            className="btn btn-link btn-floating btn-lg text-dark m-1"
-                            href="#!"
-                            role="button"
-                            data-mdb-ripple-color="dark"
                         ><i className="fab fa-instagram"/></a>
 
 
@@ -48,19 +40,13 @@ function Footer(props) {
                             data-mdb-ripple-color="dark"
                         ><i className="fab fa-linkedin"/></a>
 
-                        <a
-                            className="btn btn-link btn-floating btn-lg text-dark m-1"
-                            href="#!"
-                            role="button"
-                            data-mdb-ripple-color="dark"
-                        ><i className="fab fa-github"/></a>
                     </section>
 
                 </div>
 
                 <div className="text-center text-dark p-3">
                     © 2020 Copyright:
-                    <a className="text-dark" href="test">test</a>
+                    <a className="text-dark" href="https://marastudio.dev">marastudio.dev</a>
                 </div>
 
             </footer>

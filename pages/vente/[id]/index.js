@@ -109,7 +109,7 @@ function Index(props) {
 
                     <div className="col-12 col-lg-6 mt-5 pt-1 d-flex flex-column">
 
-                        <div className="mt-5 p-3 border border-2 border-info">
+                        <div className="p-3">
                             <h3 className="mb-3">Contact</h3>
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>{vente.contact.name}</p>
@@ -128,6 +128,7 @@ function Index(props) {
                                 }
                             </div>
                         </div>
+                        <hr/>
 
                         <div className="mt-5 px-3">
                             <h5 >Description : </h5>
