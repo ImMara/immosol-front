@@ -1,9 +1,16 @@
 import Head from '../components/head/Head';
-import Image from 'next/image'
 import Cards from "../components/cards/Cards";
+import {getFeatured} from "../actions";
+import Index from "./vente";
+import React, {useState} from "react";
+import Link from "next/link";
 
 
-export default function Home() {
+export default function Home(props) {
+
+    const [featuredLocation,setFeaturedLocation] = useState(props.featured.query[0])
+    const [featuredVente , setFeaturedVente] = useState(props.featured.query[1])
+
   return (
       <>
         <Head title={"home"} />
@@ -52,19 +59,41 @@ export default function Home() {
         <div className="container">
             <div className={"p-3 m-h-50 w-100 pb-5 row g-0 align-items-center  justify-content-center"}>
                 <div className={"col-12 m-5"}>
-                    <h2>Featured Properties</h2>
+                    <h2>Featured Location</h2>
                 </div>
-                <div className="card col-12 col-md-6 col-xl-3 m-2">
-
+                {
+                    featuredLocation.map(f => (
+                        <div className="card col-12 col-md-6 col-xl-3 m-2" style={{height:"350px"}}>
+                            <Link href={"/location/"+f._id}>
+                                <a className={"text-decoration-none"} >
+                                    <Cards data={f} name={"locations"}/>
+                                </a>
+                            </Link>
+                        </div>
+                    ))
+                }
+            </div>
+            <div className={"p-3 m-h-50 w-100 pb-5 row g-0 align-items-center justify-content-center"}>
+                <div className={"col-12 mb-5"}>
+                    <h2>Featured Vente</h2>
                 </div>
-                <div className="card col-12 col-md-6 col-xl-3 m-2">
-
-                </div>
-                <div className="card col-12 col-md-6 col-xl-3 m-2">
-
-                </div>
+                {
+                    featuredVente.map(f => (
+                        <div className="card col-12 col-md-6 col-xl-3 m-2" style={{height:"350px"}}>
+                            <Link href={"/vente/"+f._id}>
+                                <a className={"text-decoration-none"} >
+                                    <Cards data={f} name={"ventes"} />
+                                </a>
+                            </Link>
+                        </div>
+                    ))
+                }
             </div>
         </div>
       </>
   )
+}
+Home.getInitialProps = async () =>{
+    const featured = await getFeatured()
+    return {featured}
 }

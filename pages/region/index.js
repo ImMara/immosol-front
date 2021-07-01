@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from "../../components/head/Head";
 import Carousel from "../../components/carousel/Carousel";
+import {getRegion} from "../../actions";
 
 function Index(props) {
     return (
@@ -8,12 +9,12 @@ function Index(props) {
             <Head/>
             <div className="container">
                 <div className="row">
-                    <div className="col-12 mt-5">
-                        {/*<Carousel/>*/}
+                    <div className="col-12">
+                        <Carousel data={props.region[0].gallery} name={"region"}/>
                     </div>
                     <div className="col-12">
-                        <h2 className="my-5">Notre région</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias iure maxime odio odit pariatur. Ad asperiores assumenda at atque beatae consectetur consequatur corporis delectus dicta dolorem dolores eius enim eveniet, excepturi fugiat fugit hic id impedit in inventore ipsum itaque magni modi nisi odit porro provident quis quos sint tempora temporibus ut vitae voluptate. Adipisci cupiditate in, minima molestiae mollitia nemo nulla, numquam optio quae quia soluta suscipit! Ad alias aspernatur laboriosam maiores minus nihil? Architecto corporis deleniti doloremque eos minima nam officia repudiandae unde veritatis vitae! Aliquam debitis distinctio eligendi impedit laboriosam laborum maxime minima modi molestias nostrum, obcaecati optio quidem, quis ratione rem, sequi tenetur. Ad alias aspernatur consequuntur cumque deserunt dignissimos, earum esse exercitationem harum itaque natus quae quaerat quia recusandae similique ullam voluptates. Accusamus aliquam asperiores assumenda autem blanditiis consequatur debitis delectus exercitationem expedita in modi nesciunt, nisi, nobis optio placeat quaerat quo quod sequi vel.</p>
+                        <h2 className="my-5">{props.region[0].title}</h2>
+                        <p>{props.region[0].description}</p>
                     </div>
                     <div className="col-12">
                         <div className="mt-5 p-3 border border-2 border-info">
@@ -31,5 +32,8 @@ function Index(props) {
         </>
     );
 }
-
+Index.getInitialProps = async () =>{
+    const region = await getRegion();
+    return {...region}
+}
 export default Index;

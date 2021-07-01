@@ -25,3 +25,14 @@ export const getVente = (id) => {
         .get(`${BASE_URL}/api/vente/${id}`)
         .then(res => res.data)
 }
+
+export const getRegion = () =>{
+    return axios
+        .get(`${BASE_URL}/api/region`)
+        .then(res => res.data)
+}
+export const getFeatured = () =>{
+    return axios
+        .get(`${BASE_URL}/api/featured`)
+        .then(res => res.data)
+}

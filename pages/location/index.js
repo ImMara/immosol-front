@@ -41,7 +41,7 @@ function Index(props) {
                 </div>
 
                 <div className={"mt-3"}>
-                    <h1>Vente</h1>
+                    <h1>Location</h1>
                 </div>
 
                 <div className="row justify-content-center g-0">

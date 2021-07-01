@@ -53,7 +53,6 @@ function Index(props) {
                         </div>
                     ))}
                 </div>
-
             </div>
         </>
     );

@@ -146,7 +146,7 @@ function Index(props) {
 
                     <div className="d-flex py-3">
                         <Link href="/vente">
-                            <a className="btn btn-info text-white" >Retour</a>
+                            <a className="btn btn-info text-white" >Vente</a>
                         </Link>
                         <Link href="/">
                             <a className="btn btn-secondary ms-2" >Home</a>
