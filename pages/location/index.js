@@ -11,6 +11,8 @@ function Index(props) {
     const [currentPage,setCurrentPage] = useState(1)
     const itemsPerPage=6;
 
+    console.log(locations)
+
     const [search,setSearch] = useState("")
 
     const handleChange = (event) =>{
