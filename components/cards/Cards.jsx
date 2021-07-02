@@ -16,12 +16,14 @@ function Cards(props) {
                         )
                     }
                     {
+
                         vente.sold === 'Vendus' ? (
                             <span className="badge bg-danger rounded-0">Vendus</span>
-                        ) : (
+                        ) : vente.sold&&(
                             <span className="badge bg-info rounded-0">Disponible</span>
                         )
                     }
+
                 </div>
 
                 <img src={`http://vps-447d73c6.vps.ovh.net/images/${name}/gallery/` + vente.gallery[vente.image]}

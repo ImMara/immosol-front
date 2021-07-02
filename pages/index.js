@@ -4,12 +4,28 @@ import {getFeatured} from "../actions";
 import Index from "./vente";
 import React, {useState} from "react";
 import Link from "next/link";
+import Pagination from "../components/pagination/Pagination";
 
 
 export default function Home(props) {
 
     const [featuredLocation,setFeaturedLocation] = useState(props.featured.query[0])
     const [featuredVente , setFeaturedVente] = useState(props.featured.query[1])
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 3
+
+    const [currentPageVente,setCurrentPageVente] = useState(1)
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page)
+    }
+
+    const handlePageChangeVente = (page) => {
+        setCurrentPageVente(page)
+    }
+    const paginationFeaturedVente = Pagination.getData(featuredVente,currentPageVente,itemsPerPage)
+    const paginationFeaturedLocation = Pagination.getData(featuredLocation,currentPage,itemsPerPage)
 
   return (
       <>
@@ -62,7 +78,7 @@ export default function Home(props) {
                     <h2>Featured Location</h2>
                 </div>
                 {
-                    featuredLocation.map((f,k) => (
+                    paginationFeaturedLocation.map((f,k) => (
                         <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
                             <Link href={"/location/"+f._id}>
                                 <a className={"text-decoration-none"} >
@@ -72,13 +88,23 @@ export default function Home(props) {
                         </div>
                     ))
                 }
+                <div className="col-12">
+                    { itemsPerPage < featuredLocation.length &&
+                    <Pagination
+                        currentPage={currentPage}
+                        itemsPerPage={itemsPerPage}
+                        length={featuredLocation.length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
+                </div>
             </div>
             <div className={"p-3 m-h-50 w-100 pb-5 row g-0 align-items-center justify-content-center"}>
                 <div className={"col-12 mb-5"}>
                     <h2>Featured Vente</h2>
                 </div>
                 {
-                    featuredVente.map((f,k) => (
+                    paginationFeaturedVente.map((f,k) => (
                         <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
                             <Link href={"/vente/"+f._id}>
                                 <a className={"text-decoration-none"} >
@@ -88,6 +114,16 @@ export default function Home(props) {
                         </div>
                     ))
                 }
+                <div className="col-12">
+                    { itemsPerPage < featuredLocation.length &&
+                    <Pagination
+                        currentPage={currentPageVente}
+                        itemsPerPage={itemsPerPage}
+                        length={featuredVente.length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
+                </div>
             </div>
         </div>
       </>

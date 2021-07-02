@@ -3,10 +3,13 @@ import Head from "../../components/head/Head";
 import Cards from "../../components/cards/Cards";
 import Link from 'next/link';
 import {getVentes} from "../../actions";
+import Pagination from "../../components/pagination/Pagination";
 
 function Index(props) {
 
     const [search,setSearch] = useState("")
+    const [currentPage,setCurrentPage] = useState(1)
+    const itemsPerPage=6;
 
     const handleChange = (event) =>{
         const target = event.target
@@ -18,6 +21,12 @@ function Index(props) {
     const filtered = () =>{
        return props.ventes.filter(vente => vente.title.toLowerCase().includes(search))
     }
+
+    const handlePageChange = (page) =>{
+        setCurrentPage(page)
+    }
+
+    const pagination = Pagination.getData(filtered(),currentPage,itemsPerPage)
 
     return (
         <>
@@ -41,9 +50,18 @@ function Index(props) {
                 <div className={"mt-3"}>
                     <h1>Vente</h1>
                 </div>
-
+                <div>
+                    { itemsPerPage < filtered().length &&
+                    <Pagination
+                        currentPage={currentPage}
+                        itemsPerPage={itemsPerPage}
+                        length={filtered().length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
+                </div>
                 <div className="row justify-content-center g-0">
-                    {filtered().map((v,k) => (
+                    {pagination.map((v,k) => (
                         <div className="card col-10 col-md-5 col-xl-3 m-3" key={k} style={{height:"350px"}}>
                             <Link href={"/vente/"+v._id}>
                                 <a className={"text-decoration-none"} >
@@ -52,6 +70,16 @@ function Index(props) {
                             </Link>
                         </div>
                     ))}
+                </div>
+                <div>
+                    { itemsPerPage < filtered().length &&
+                    <Pagination
+                        currentPage={currentPage}
+                        itemsPerPage={itemsPerPage}
+                        length={filtered().length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
                 </div>
             </div>
         </>

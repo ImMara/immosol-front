@@ -3,10 +3,13 @@ import Head from "../../components/head/Head";
 import Cards from "../../components/cards/Cards";
 import {getLocations} from "../../actions";
 import Link from "next/link";
+import Pagination from "../../components/pagination/Pagination";
 
 function Index(props) {
 
     const [locations,setLocation] = useState(props.locations)
+    const [currentPage,setCurrentPage] = useState(1)
+    const itemsPerPage=6;
 
     const [search,setSearch] = useState("")
 
@@ -20,6 +23,12 @@ function Index(props) {
     const filtered = () =>{
         return locations.filter(location => location.title.toLowerCase().includes(search))
     }
+
+    const handlePageChange = (page) =>{
+        setCurrentPage(page)
+    }
+
+    const pagination = Pagination.getData(filtered(),currentPage,itemsPerPage)
 
     return (
         <>
@@ -43,9 +52,18 @@ function Index(props) {
                 <div className={"mt-3"}>
                     <h1>Location</h1>
                 </div>
-
+                <div>
+                    { itemsPerPage < filtered().length &&
+                    <Pagination
+                        currentPage={currentPage}
+                        itemsPerPage={itemsPerPage}
+                        length={filtered().length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
+                </div>
                 <div className="row justify-content-center g-0">
-                    {filtered().map((l,k) => (
+                    {pagination.map((l,k) => (
                         <div className="card col-10 col-md-5 col-xl-3 m-3" key={k} style={{height:"350px"}}>
                             <Link href={"/location/"+l._id}>
                                 <a className={"text-decoration-none"} >
@@ -55,7 +73,16 @@ function Index(props) {
                         </div>
                     ))}
                 </div>
-
+                <div>
+                    { itemsPerPage < filtered().length &&
+                    <Pagination
+                        currentPage={currentPage}
+                        itemsPerPage={itemsPerPage}
+                        length={filtered().length}
+                        onPageChanged={handlePageChange}
+                    />
+                    }
+                </div>
             </div>
         </>
     );
