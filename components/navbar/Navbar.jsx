@@ -4,7 +4,7 @@ import Link from 'next/link';
 function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
                     <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
@@ -12,7 +12,7 @@ function Navbar(props) {
                         <span className="navbar-toggler-icon"/>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <a className="navbar-brand" href="#">Hidden brand</a>
+                        <a className="navbar-brand"><img src="/images/logo.png" style={{height:"35px"}} alt="logo"/></a>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link href="/">
