@@ -43,8 +43,8 @@ function Index(props) {
                 </div>
 
                 <div className="row justify-content-center g-0">
-                    {filtered().map(v => (
-                        <div className="card col-10 col-md-5 col-xl-3 m-3" style={{height:"350px"}}>
+                    {filtered().map((v,k) => (
+                        <div className="card col-10 col-md-5 col-xl-3 m-3" key={k} style={{height:"350px"}}>
                             <Link href={"/vente/"+v._id}>
                                 <a className={"text-decoration-none"} >
                                     <Cards data={v} name={"ventes"}/>

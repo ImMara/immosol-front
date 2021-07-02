@@ -62,11 +62,11 @@ export default function Home(props) {
                     <h2>Featured Location</h2>
                 </div>
                 {
-                    featuredLocation.map(f => (
-                        <div className="card col-12 col-md-6 col-xl-3 m-2" style={{height:"350px"}}>
+                    featuredLocation.map((f,k) => (
+                        <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
                             <Link href={"/location/"+f._id}>
                                 <a className={"text-decoration-none"} >
-                                    <Cards data={f} name={"locations"}/>
+                                    <Cards data={f} name={"locations"} />
                                 </a>
                             </Link>
                         </div>
@@ -78,11 +78,11 @@ export default function Home(props) {
                     <h2>Featured Vente</h2>
                 </div>
                 {
-                    featuredVente.map(f => (
-                        <div className="card col-12 col-md-6 col-xl-3 m-2" style={{height:"350px"}}>
+                    featuredVente.map((f,k) => (
+                        <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
                             <Link href={"/vente/"+f._id}>
                                 <a className={"text-decoration-none"} >
-                                    <Cards data={f} name={"ventes"} />
+                                    <Cards data={f} name={"ventes"}  />
                                 </a>
                             </Link>
                         </div>

@@ -19,7 +19,7 @@ function Carousel(props) {
             <div className="carousel-inner" style={{height:props.size}}>
                 {
                     images.map((i , key) => (
-                        <div className={key === 0 ? "carousel-item active" : "carousel-item"} style={{height:props.size}}>
+                        <div className={key === 0 ? "carousel-item active" : "carousel-item"} style={{height:props.size}} key={key}>
                             <img src={`http://vps-447d73c6.vps.ovh.net/images/${props.name}/gallery/`+i} className={"object-cover h-100 w-100"} alt="..."/>
                         </div>
                     ))
