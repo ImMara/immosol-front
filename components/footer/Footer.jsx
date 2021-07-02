@@ -11,7 +11,7 @@ function Footer(props) {
 
                         <a
                             className="btn btn-link btn-floating btn-lg text-dark m-1"
-                            href="#!"
+                            href="https://www.facebook.com/fabrice.fa.37"
                             role="button"
                             data-mdb-ripple-color="dark"
                         ><i className="fab fa-facebook-f"/></a>
