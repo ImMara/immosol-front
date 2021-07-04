@@ -9,7 +9,7 @@ function Index(props) {
             <Head/>
             <div className="container">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 mt-5">
                         <Carousel data={props.region[0].gallery} name={"region"} size={"50vh"}/>
                     </div>
                     <div className="col-12">
