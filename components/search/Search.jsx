@@ -1,19 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {getLocations} from '../../actions';
-import Index from "../../pages/location";
+import Pagination from "../pagination/Pagination";
 
 function Search(props) {
 
     const [locations,setLocation] = useState(props.locations)
-    console.log(locations)
+    const [ventes,setVentes] = useState(props.ventes)
 
     const [selector,setSelector] = useState('Type de bien')
     const [category,setCategory] = useState()
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 5
 
     const clickSelector = (event) =>{
         const target = event.target
         const value = target.textContent
         setSelector(value)
+    }
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page)
     }
 
     const checkbox = (event) =>{
@@ -23,10 +29,17 @@ function Search(props) {
     }
 
     const filtered = () =>{
-        // switch () {
-        //
-        // }
+        switch (category) {
+            case "vente":
+                return ventes;
+            case "location":
+                return locations;
+            default:
+                return [];
+        }
     }
+
+    const pagination = Pagination.getData(filtered(),currentPage,itemsPerPage)
 
     return (
         <>
@@ -43,9 +56,22 @@ function Search(props) {
                         <li><a className="dropdown-item" onClick={clickSelector} >Appartement</a></li>
                         <li><a className="dropdown-item" onClick={clickSelector} >Tous</a></li>
                     </ul>
-                    <input type="text" data-bs-toggle="dropdown" className="form-control w-auto border-1 border-md-5 border-white"   aria-label="Text input with segmented dropdown button"/>
-                    <ul className={"dropdown-menu"}>
-
+                    <input type="text" data-bs-toggle="dropdown" className="form-control w-auto border-1 border-md-5 border-white" data-bs-auto-close="outside" aria-expanded="false"/>
+                    <ul className={"dropdown-menu"} aria-labelledby="dropdownMenuClickableInside">
+                        {pagination.map(d => (
+                            <li><a className={"dropdown-item"} href={"/"+category+"/"+d._id}>{d.title}</a></li>
+                        ))}
+                        <li>
+                        <div className="dropdown-divider"/>
+                        { itemsPerPage < filtered().length &&
+                        <Pagination
+                            currentPage={currentPage}
+                            itemsPerPage={itemsPerPage}
+                            length={filtered().length}
+                            onPageChanged={handlePageChange}
+                        />
+                        }
+                    </li>
                     </ul>
                     <button type="button" className="btn btn-info text-white p-2 p-lg-3 px-5">Rechercher</button>
                 </div>
@@ -76,8 +102,4 @@ function Search(props) {
     );
 }
 
-Search.getInitialProps = async () =>{
-    const locations = await getLocations()
-    return {...locations}
-}
 export default Search;

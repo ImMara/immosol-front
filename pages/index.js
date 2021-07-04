@@ -1,6 +1,6 @@
 import Head from '../components/head/Head';
 import Cards from "../components/cards/Cards";
-import {getFeatured} from "../actions";
+import {getFeatured, getLocations, getVentes} from "../actions";
 import Index from "./vente";
 import React, {useState} from "react";
 import Link from "next/link";
@@ -25,6 +25,7 @@ export default function Home(props) {
     const handlePageChangeVente = (page) => {
         setCurrentPageVente(page)
     }
+
     const paginationFeaturedVente = Pagination.getData(featuredVente,currentPageVente,itemsPerPage)
     const paginationFeaturedLocation = Pagination.getData(featuredLocation,currentPage,itemsPerPage)
 
@@ -36,7 +37,7 @@ export default function Home(props) {
                 <div className={'container position-absolute w-75 top-50 start-50 text-white'} style={{transform:'translate(-50%,-50%)'}}>
                     <h3 className={"text-center text-easy"}>the best way to</h3>
                     <h1 className={"mb-3 mb-sm-5 text-center text-easy"}>Find your perfect Home</h1>
-                    <Search/>
+                    <Search locations={props.locations} ventes={props.ventes}/>
                 </div>
         </div>
         <div className="container">
@@ -98,5 +99,7 @@ export default function Home(props) {
 }
 Home.getInitialProps = async () =>{
     const featured = await getFeatured()
-    return {featured}
+    const locations = await getLocations()
+    const ventes = await getVentes()
+    return {featured,...ventes,...locations}
 }
