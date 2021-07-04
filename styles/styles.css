@@ -51,6 +51,15 @@ body,html{
     transition: all .2s ease-in-out;
 }
 
+.page-item.active .page-link{
+    background-color: #0dcaf0;
+    border-color:#0dcaf0;
+}
+
+.page-link{
+    color:#0dcaf0;
+
+}
 /* */
     /*custom css*/
 /* */
