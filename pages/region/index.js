@@ -33,7 +33,7 @@ function Index(props) {
         </>
     );
 }
-Index.getInitialProps = async () =>{
+Index.getInitialProps = async () => {
     const region = await getRegion();
     return {...region}
 }
