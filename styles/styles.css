@@ -46,6 +46,11 @@ body,html{
     background-color: #6DD2E0;
 }
 
+.card{
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    transition: all .2s ease-in-out;
+}
+
 /* */
     /*custom css*/
 /* */

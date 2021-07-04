@@ -34,7 +34,7 @@ export default function Home(props) {
         <Head title={"home"} />
         <div className={"m-h-50 w-100 position-relative"}>
             <img src="/images/home.png" className={"home-img object-cover"}  alt=""/>
-                <div className={'container position-absolute w-75 top-50 start-50 text-white'} style={{transform:'translate(-50%,-50%)'}}>
+                <div className={'position-absolute w-75 top-50 start-50 text-white'} style={{transform:'translate(-50%,-50%)'}}>
                     <h3 className={"text-center text-easy"}>L'immobilier au soleil</h3>
                     <h1 className={"mb-3 mb-sm-5 text-center text-easy"}>ImmoSol InvestFa</h1>
                     <Search locations={props.locations} ventes={props.ventes}/>
@@ -47,7 +47,7 @@ export default function Home(props) {
                 </div>
                 {
                     paginationFeaturedLocation.map((f,k) => (
-                        <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
+                        <div className="card card-hover col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
                             <Link href={"/location/"+f._id}>
                                 <a className={"text-decoration-none"} >
                                     <Cards data={f} name={"locations"} />

@@ -18,7 +18,7 @@ function Cards(props) {
                     {
 
                         vente.sold === 'Vendus' ? (
-                            <span className="badge bg-danger rounded-0">Vendus</span>
+                            <span className="badge bg-danger rounded-0">Vendu</span>
                         ) : vente.sold&&(
                             <span className="badge bg-info rounded-0">Disponible</span>
                         )
