@@ -19,7 +19,7 @@ function Index(props) {
             <div className={"h-50 w-100 position-relative bg-dark"}>
                 <img src={"http://vps-447d73c6.vps.ovh.net/images/locations/gallery/" + location.gallery[location.image]}
                      className={"object-cover h-100 w-100"} alt="..."/>
-                <div className="position-absolute top-50 start-50 text-white text-easy text-center"
+                <div className="position-absolute top-50 start-50 text-white text-easy-strong text-center"
                      style={{transform: 'translate(-50%,-50%)'}}>
                     <h2>{location.title}</h2>
                     <p>{location.details.type + "/" + location.zip}</p>

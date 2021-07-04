@@ -10,7 +10,6 @@ const Pagination = (props) => {
         pages.push(i)
     }
 
-
     return (
         <>
             <ul className="pagination pagination-sm my-3 justify-content-center pagination-color">

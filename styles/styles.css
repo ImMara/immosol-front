@@ -7,6 +7,9 @@ body,html{
 .text-easy{
     text-shadow: 0 0 7px rgba(0,0,0, 0.5);
 }
+.text-easy-strong{
+    text-shadow: 0 0 15px rgba(0,0,0, 1);
+}
 .color-blue-logo{
     color:#8BF0FC;
 }
@@ -55,11 +58,15 @@ body,html{
     background-color: #0dcaf0;
     border-color:#0dcaf0;
 }
-
 .page-link{
     color:#0dcaf0;
-
 }
+
+.form-check-input:checked{
+    background-color: #0dcaf0;
+    border-color:#0dcaf0;
+}
+
 /* */
     /*custom css*/
 /* */

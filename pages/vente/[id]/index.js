@@ -19,7 +19,7 @@ function Index(props) {
 
                 <img src={"http://vps-447d73c6.vps.ovh.net/images/ventes/gallery/"+vente.gallery[vente.image]} className={"object-cover h-100 w-100"}  alt="..."/>
 
-                <div className="position-absolute top-50 start-50 text-white text-easy text-center" style={{transform:'translate(-50%,-50%)'}}>
+                <div className="position-absolute top-50 start-50 text-white text-easy-strong text-center" style={{transform:'translate(-50%,-50%)'}}>
                     <h2>{vente.title}</h2>
                     <p>{vente.details.type+ "/" + vente.zip}</p>
                 </div>
