@@ -5,6 +5,7 @@ function Search(props) {
 
     const [locations,setLocation] = useState(props.locations)
     const [ventes,setVentes] = useState(props.ventes)
+    const [search,setSearch] = useState("")
 
     const [selector,setSelector] = useState('Type de bien')
     const [category,setCategory] = useState()
@@ -18,6 +19,12 @@ function Search(props) {
         setSelector(value)
     }
 
+    const handleChange = (event) =>{
+        const target = event.target
+        const value = target.value
+        setSearch(value)
+    }
+
     const handlePageChange = (page) => {
         setCurrentPage(page)
     }
@@ -29,13 +36,42 @@ function Search(props) {
     }
 
     const filtered = () =>{
+        let filterByType;
         switch (category) {
             case "vente":
-                return ventes;
+                switch (selector) {
+                    case "Appartement" :
+                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Studio" :
+                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Maison" :
+                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    default:
+                        return ventes;
+                }
             case "location":
-                return locations;
+                switch (selector) {
+                    case "Appartement" :
+                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Studio" :
+                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Maison" :
+                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        return filterByType.filter(f => f.title.includes(search))
+                    default:
+                        return locations;
+                }
             default:
-                return [];
+                let newArray = [];
+                ventes.map( v => newArray.push(v))
+                locations.map(l => newArray.push(l))
+                console.log( newArray)
+                return newArray;
         }
     }
 
@@ -54,12 +90,13 @@ function Search(props) {
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" onClick={clickSelector} >Maison</a></li>
                         <li><a className="dropdown-item" onClick={clickSelector} >Appartement</a></li>
+                        <li><a className="dropdown-item" onClick={clickSelector} >Studio</a></li>
                         <li><a className="dropdown-item" onClick={clickSelector} >Tous</a></li>
                     </ul>
-                    <input type="text" data-bs-toggle="dropdown" className="form-control w-auto border-1 border-md-5 border-white" data-bs-auto-close="outside" aria-expanded="false"/>
+                    <input type="text" data-bs-toggle="dropdown" onChange={handleChange} className="form-control w-auto border-1 border-md-5 border-white" data-bs-auto-close="outside" aria-expanded="false"/>
                     <ul className={"dropdown-menu"} aria-labelledby="dropdownMenuClickableInside">
                         {pagination.map(d => (
-                            <li><a className={"dropdown-item"} href={"/"+category+"/"+d._id}>{d.title}</a></li>
+                            <li><a className={"dropdown-item"} href={ "/"+ (d.cost?"vente/"+d._id : "location/"+d._id) }>{d.title}</a></li>
                         ))}
                         <li>
                         <div className="dropdown-divider"/>
@@ -94,7 +131,7 @@ function Search(props) {
                 <div className="form-check ms-2">
                     <input className="form-check-input" type="radio" value="all" onClick={checkbox} name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault2">
-                        tous
+                        Tous
                     </label>
                 </div>
             </div>
