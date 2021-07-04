@@ -6,7 +6,7 @@ import {getRegion} from "../../actions";
 function Index(props) {
     return (
         <>
-            <Head/>
+            <Head title={"immosol/region"}/>
             <div className="container">
                 <div className="row">
                     <div className="col-12 mt-5">
