@@ -8,7 +8,7 @@ function Search(props) {
     const [search,setSearch] = useState("")
 
     const [selector,setSelector] = useState('Type de bien')
-    const [category,setCategory] = useState()
+    const [category,setCategory] = useState("tous")
 
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 5
@@ -37,41 +37,52 @@ function Search(props) {
 
     const filtered = () =>{
         let filterByType;
+        let newArray = [];
+        ventes.map(v => newArray.push(v))
+        locations.map(l => newArray.push(l))
         switch (category) {
             case "vente":
                 switch (selector) {
                     case "Appartement" :
-                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = ventes.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     case "Studio" :
-                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = ventes.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     case "Maison" :
-                        filterByType = ventes.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = ventes.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     default:
-                        return ventes;
+                        return ventes.filter(f => f.title.includes(search));
                 }
             case "location":
                 switch (selector) {
                     case "Appartement" :
-                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = locations.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     case "Studio" :
-                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = locations.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     case "Maison" :
-                        filterByType = locations.filter( v => v.details.type === selector.toLowerCase() )
+                        filterByType = locations.filter(v => v.details.type === selector.toLowerCase())
                         return filterByType.filter(f => f.title.includes(search))
                     default:
-                        return locations;
+                        return locations.filter(f => f.title.includes(search));
                 }
             default:
-                let newArray = [];
-                ventes.map( v => newArray.push(v))
-                locations.map(l => newArray.push(l))
-                console.log( newArray)
-                return newArray;
+                switch (selector) {
+                    case "Appartement" :
+                        filterByType = newArray.filter(v => v.details.type === selector.toLowerCase())
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Studio" :
+                        filterByType = newArray.filter(v => v.details.type === selector.toLowerCase())
+                        return filterByType.filter(f => f.title.includes(search))
+                    case "Maison" :
+                        filterByType = newArray.filter(v => v.details.type === selector.toLowerCase())
+                        return filterByType.filter(f => f.title.includes(search))
+                    default:
+                        return newArray.filter(a => a.title.includes(search));
+                }
         }
     }
 
@@ -88,18 +99,23 @@ function Search(props) {
                         <span className="px-5">{selector}</span>
                     </button>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" onClick={clickSelector} >Maison</a></li>
-                        <li><a className="dropdown-item" onClick={clickSelector} >Appartement</a></li>
-                        <li><a className="dropdown-item" onClick={clickSelector} >Studio</a></li>
-                        <li><a className="dropdown-item" onClick={clickSelector} >Tous</a></li>
+                        <li><a className="dropdown-item" onClick={ (event) => {clickSelector(event); handlePageChange(1)}} >Maison</a></li>
+                        <li><a className="dropdown-item" onClick={ (event) => {clickSelector(event); handlePageChange(1)}} >Appartement</a></li>
+                        <li><a className="dropdown-item" onClick={ (event) => {clickSelector(event); handlePageChange(1)}} >Studio</a></li>
+                        <li><a className="dropdown-item" onClick={ (event) => {clickSelector(event); handlePageChange(1)}} >Tous</a></li>
                     </ul>
                     <input type="text" data-bs-toggle="dropdown" onChange={handleChange} className="form-control w-auto border-1 border-md-5 border-white" data-bs-auto-close="outside" aria-expanded="false"/>
                     <ul className={"dropdown-menu"} aria-labelledby="dropdownMenuClickableInside">
-                        {pagination.map(d => (
-                            <li><a className={"dropdown-item"} href={ "/"+ (d.cost?"vente/"+d._id : "location/"+d._id) }>{d.title}</a></li>
+                        {pagination.map((d,k) => (
+                            <li key={k}>
+                                <a className={"dropdown-item"} href={ "/"+ (d.cost?"vente/"+d._id : "location/"+d._id) }>
+                                    {d.title}
+                                    <span className="badge ms-1 bg-secondary">{d.cost?"Vente":"Location"}</span>
+                                </a>
+                            </li>
                         ))}
-                        <li>
                         <div className="dropdown-divider"/>
+                        <li>
                         { itemsPerPage < filtered().length &&
                         <Pagination
                             currentPage={currentPage}
@@ -117,19 +133,19 @@ function Search(props) {
 
             <div className={"mt-3 mb-2 d-flex flex-wrap flex-column flex-sm-row"}>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" value="vente" onClick={checkbox} name="flexRadioDefault" id="flexRadioDefault1"/>
+                    <input className="form-check-input" type="radio" value="vente" onClick={(event) =>{ checkbox(event); handlePageChange(1)}} name="flexRadioDefault" id="flexRadioDefault1"/>
                         <label className="form-check-label" htmlFor="flexRadioDefault1">
                             Vente
                         </label>
                 </div>
                 <div className="form-check ms-2">
-                    <input className="form-check-input" type="radio" value="location" onClick={checkbox} name="flexRadioDefault" id="flexRadioDefault2"/>
+                    <input className="form-check-input" type="radio" value="location" onClick={(event) =>{ checkbox(event); handlePageChange(1)}} name="flexRadioDefault" id="flexRadioDefault2"/>
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Location
                         </label>
                 </div>
                 <div className="form-check ms-2">
-                    <input className="form-check-input" type="radio" value="all" onClick={checkbox} name="flexRadioDefault" id="flexRadioDefault2"/>
+                    <input className="form-check-input" type="radio" value="all" onClick={(event) =>{ checkbox(event); handlePageChange(1)}} name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault2">
                         Tous
                     </label>
