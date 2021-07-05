@@ -87,7 +87,7 @@ export default function Home(props) {
                     ))
                 }
                 <div className="col-12">
-                    { itemsPerPage < featuredLocation.length &&
+                    { itemsPerPage < featuredVente.length &&
                     <Pagination
                         currentPage={currentPageVente}
                         itemsPerPage={itemsPerPage}
