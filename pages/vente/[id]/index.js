@@ -15,9 +15,9 @@ function Index(props) {
         <>
             <Head title={`immosol/vente/${vente.title}`}/>
 
-            <div className={"h-50 w-100 position-relative bg-dark"}>
+            <div className={"w-100 position-relative bg-dark"}>
 
-                <img src={"https://marastudio.xyz/images/ventes/gallery/"+vente.gallery[vente.image]} className={"object-cover h-100 w-100"}  alt="..."/>
+                <Carousel data={vente.gallery} name={"ventes"} size={"500px"}/>
 
                 <div className="position-absolute top-50 start-50 text-white text-easy-strong text-center" style={{transform:'translate(-50%,-50%)'}}>
                     <h2>{vente.title}</h2>
@@ -27,11 +27,11 @@ function Index(props) {
 
             <div className="container">
 
-                <div className="row">
+                <div className="row g-3">
 
-                    <div className="col-12 col-lg-6">
+                    <div className="col-12 mt-5 col-lg-6 shadow rounded-3">
 
-                        <h2 className="mt-5 text-capitalize">{vente.title}</h2>
+                        <h2 className=" text-capitalize">{vente.title}</h2>
 
                         <div className="d-flex my-1">
                             {
@@ -103,13 +103,15 @@ function Index(props) {
                             }
                         </div>
 
-                        <Carousel data={vente.gallery} name={"ventes"} size={"350px"}/>
-
+                        <div className="mt-5 px-3">
+                            <h5 >Description : </h5>
+                            <p>{ vente.description }</p>
+                        </div>
                     </div>
 
                     <div className="col-12 col-lg-6 mt-5 pt-1 d-flex flex-column">
 
-                        <div className="p-3">
+                        <div className="p-3 shadow rounded-3">
                             <h3 className="mb-3">Contact</h3>
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>{vente.contact.name}</p>
@@ -129,15 +131,10 @@ function Index(props) {
                             </div>
                         </div>
                         <hr/>
-
-                        <div className="mt-5 px-3">
-                            <h5 >Description : </h5>
-                            <p>{ vente.description }</p>
-                        </div>
                         {
                             vente.cost &&
                             (
-                                <div className="mt-5 px-3">
+                                <div className="py-5 px-3 shadow rounded-3">
                                     <h5>Prix :</h5>
                                     <h5 className="mt-3 text-info mx-3"><strong>{ vente.cost }$</strong></h5>
                                 </div>
@@ -147,10 +144,10 @@ function Index(props) {
 
                     <div className="d-flex py-3">
                         <Link href="/vente">
-                            <a className="btn btn-info text-white" >Vente</a>
+                            <a className="btn btn-info text-white shadow" >Vente</a>
                         </Link>
                         <Link href="/">
-                            <a className="btn btn-secondary ms-2" >Home</a>
+                            <a className="btn btn-secondary ms-2 shadow" >Home</a>
                         </Link>
                     </div>
 

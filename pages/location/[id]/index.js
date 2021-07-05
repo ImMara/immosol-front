@@ -16,9 +16,8 @@ function Index(props) {
 
             <Head title={`immosol/location/${location.title}`}/>
 
-            <div className={"h-50 w-100 position-relative bg-dark"}>
-                <img src={"https://marastudio.xyz/images/locations/gallery/" + location.gallery[location.image]}
-                     className={"object-cover h-100 w-100"} alt="..."/>
+            <div className={"w-100 position-relative bg-dark"}>
+                <Carousel data={location.gallery} name={"locations"} size={"500px"}/>
                 <div className="position-absolute top-50 start-50 text-white text-easy-strong text-center"
                      style={{transform: 'translate(-50%,-50%)'}}>
                     <h2>{location.title}</h2>
@@ -28,13 +27,13 @@ function Index(props) {
 
             <div className="container">
 
-                <div className="row">
+                <div className="row g-3">
 
-                    <div className="col-12 col-lg-6">
+                    <div className="col-12 mt-5 p-3 col-lg-6 shadow rounded-3">
 
-                        <h2 className="mt-5 text-capitalize">{location.title}</h2>
+                        <h2 className="text-capitalize">{location.title}</h2>
 
-                        <div className="d-flex my-1">
+                        <div className="d-flex my-1 ">
                             {
                                 location.featured && (
                                     <span className="badge bg-danger mx-1 p-2">Featured</span>
@@ -104,12 +103,16 @@ function Index(props) {
                                 )
                             }
                         </div>
-                        <Carousel data={location.gallery} name={"locations"} size={"350px"}/>
+
+                        <div className="mt-3 px-3">
+                            <h5>Description : </h5>
+                            <p>{location.description}</p>
+                        </div>
 
                     </div>
                     <div className="col-12 col-lg-6 mt-5 pt-1 d-flex flex-column">
 
-                        <div className="p-3">
+                        <div className="p-3 shadow rounded-3">
                             <h3 className="mb-3">Contact</h3>
                             <div className="row">
                                 <p className="col-6"><i className="fas fa-user me-2"/>{location.contact.name}</p>
@@ -129,14 +132,10 @@ function Index(props) {
                             </div>
                         </div>
                         <hr/>
-                        <div className="mt-5 px-3">
-                            <h5>Description : </h5>
-                            <p>{location.description}</p>
-                        </div>
                         {
-                            location.details.cost&&
+                            location.cost&&
                             (
-                                <div className="mt-5 px-3">
+                                <div className="py-5 px-3 flex-fill shadow rounded-3">
                                     <h5>Prix :</h5>
                                     <h5 className="mt-3 text-info mx-3"><strong>{location.cost}$</strong></h5>
                                 </div>
@@ -144,12 +143,12 @@ function Index(props) {
                         }
                     </div>
 
-                    <div className="d-flex py-3">
+                    <div className="d-flex mt-3 py-3">
                         <Link href="/location">
-                            <a className="btn btn-info text-white" >Location</a>
+                            <a className="btn btn-info text-white shadow" >Location</a>
                         </Link>
                         <Link href="/">
-                            <a className="btn btn-secondary ms-2" >Home</a>
+                            <a className="btn btn-secondary ms-2 shadow" >Home</a>
                         </Link>
                     </div>
 
