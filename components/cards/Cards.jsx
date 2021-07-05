@@ -26,7 +26,7 @@ function Cards(props) {
 
                 </div>
 
-                <img src={`http://vps-447d73c6.vps.ovh.net/images/${name}/gallery/` + vente.gallery[vente.image]}
+                <img src={`https://marastudio.xyz/images/${name}/gallery/` + vente.gallery[vente.image]}
                      style={{height: "150px"}} className="card-img-top object-cover" alt="..."/>
 
             </div>
