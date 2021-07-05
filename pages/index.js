@@ -41,18 +41,20 @@ export default function Home(props) {
                 </div>
         </div>
         <div className="container">
-            <div className={"p-3 m-h-50 w-100 pb-5 row g-0 align-items-center  justify-content-center"}>
+            <div className={"p-3 m-h-50 w-100 pb-5 row g-3 align-items-center  justify-content-center"}>
                 <div className={"col-12 m-5"}>
                     <h2>Nos locations mise en avant: </h2>
                 </div>
                 {
                     paginationFeaturedLocation.map((f,k) => (
-                        <div className="card card-hover col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
-                            <Link href={"/location/"+f._id}>
-                                <a className={"text-decoration-none"} >
-                                    <Cards data={f} name={"locations"} />
-                                </a>
-                            </Link>
+                        <div className="col-12 col-md-6 col-xl-4" key={k} >
+                            <div className="card" style={{minHeight:"350px"}}>
+                                <Link href={"/location/"+f._id}>
+                                    <a className={"text-decoration-none"} >
+                                        <Cards data={f} name={"locations"} />
+                                    </a>
+                                </Link>
+                            </div>
                         </div>
                     ))
                 }
@@ -67,18 +69,20 @@ export default function Home(props) {
                     }
                 </div>
             </div>
-            <div className={"p-3 m-h-50 w-100 pb-5 row g-0 align-items-center justify-content-center"}>
+            <div className={"p-3 m-h-50 w-100 pb-5 row g-3 align-items-center justify-content-center"}>
                 <div className={"col-12 mb-5"}>
                     <h2>Nos vente mise en avant: </h2>
                 </div>
                 {
                     paginationFeaturedVente.map((f,k) => (
-                        <div className="card col-12 col-md-6 col-xl-3 m-2" key={k} style={{height:"350px"}}>
-                            <Link href={"/vente/"+f._id}>
-                                <a className={"text-decoration-none"} >
-                                    <Cards data={f} name={"ventes"}  />
-                                </a>
-                            </Link>
+                        <div className="col-12 col-md-6 col-xl-4" key={k} >
+                            <div className="card" style={{height:"350px"}}>
+                                <Link href={"/vente/"+f._id}>
+                                    <a className={"text-decoration-none"} >
+                                        <Cards data={f} name={"ventes"}  />
+                                    </a>
+                                </Link>
+                            </div>
                         </div>
                     ))
                 }
