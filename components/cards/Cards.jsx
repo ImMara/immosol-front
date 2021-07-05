@@ -39,7 +39,7 @@ function Cards(props) {
                         vente.details.bathroom &&
                         (
                             <div className={"col-6 text-secondary"}>
-                                <i className={"fas fa-bath me-1" + !vente.details.bathroom && "opacity-0"}/>
+                                <i className={"fas fa-bath me-1 " + (!vente.details.bathroom && " opacity-0")}/>
                                 <span
                                     style={{fontSize: "14px"}}>{vente.details.bathroom && vente.details.bathroom + " salle de bain"}</span>
                             </div>
@@ -49,7 +49,7 @@ function Cards(props) {
                         vente.details.bedroom &&
                         (
                             <div className={"col-6 text-secondary"}>
-                                <i className={"fas fa-bed me-1" + !vente.details.bedroom && "opcaty-0"}/>
+                                <i className={"fas fa-bed me-1 " + (!vente.details.bedroom && " opcaty-0")}/>
                                 <span style={{fontSize:"14px"}}>
                                 {
                                     vente.details.bedroom === 1 ? vente.details.bedroom + ' chambre' : vente.details.bedroom + ' chambres'
@@ -59,14 +59,14 @@ function Cards(props) {
                         )
                     }
                     <div className="col-6 text-secondary">
-                        <i className="fas fa-city me-1"/>
+                        <i className="fas fa-city me-1 "/>
                         <span style={{fontSize: "14px"}}>{vente.details.type}</span>
                     </div>
                     {
                         vente.details.surface &&
                         (
                             <div className="col-6 text-secondary">
-                                <i className={"fas fa-border-style me-1" + !vente.details.surface && "opacity-0"}/>
+                                <i className={"fas fa-border-style me-1 " + (!vente.details.surface && " opacity-0")}/>
                                 <span style={{fontSize: "14px"}}>{ vente.details.surface + "m²"}</span>
                             </div>
                         )
