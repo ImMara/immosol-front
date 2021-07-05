@@ -139,13 +139,13 @@ function Search(props) {
                             Vente
                         </label>
                 </div>
-                <div className="form-check ms-2">
+                <div className="form-check ms-0 ms-sm-2">
                     <input className="form-check-input" type="radio" value="location" onClick={(event) =>{ checkbox(event); handlePageChange(1)}} name="flexRadioDefault" id="flexRadioDefault2"/>
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Location
                         </label>
                 </div>
-                <div className="form-check ms-2">
+                <div className="form-check ms-0 ms-sm-2">
                     <input className="form-check-input" type="radio" value="all" onClick={(event) =>{ checkbox(event); handlePageChange(1)}} name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault2">
                         Tous

@@ -34,7 +34,7 @@ export default function Home(props) {
         <Head title={"home"} />
         <div className={"m-h-50 w-100 position-relative"}>
             <img src="/images/home.png" className={"home-img object-cover"}  alt=""/>
-                <div className={'position-absolute w-75 top-50 start-50 text-white'} style={{transform:'translate(-50%,-50%)'}}>
+                <div className={'container p-0 m-0 position-absolute w-75 top-50 start-50 text-white'} style={{transform:'translate(-50%,-50%)'}}>
                     <h3 className={"text-center text-easy"}>L'immobilier au soleil</h3>
                     <h1 className={"mb-3 mb-sm-5 text-center text-easy"}>ImmoSol InvestFa</h1>
                     <Search locations={props.locations} ventes={props.ventes}/>
