@@ -28,9 +28,9 @@ function Index(props) {
 
             <div className="container">
 
-                <div className="row g-3">
+                <div className="row gy-3 gx-4">
 
-                    <div className="col-12 mt-5 col-lg-6 shadow rounded-3">
+                    <div className="col-12 p-3 mt-5 col-lg-6 shadow rounded-3">
 
                         <h2 className=" text-capitalize">{vente.title}</h2>
 
