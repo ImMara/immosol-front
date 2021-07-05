@@ -7,11 +7,15 @@ function Index(props) {
     return (
         <>
             <Head title={"immosol/region"}/>
-            <div className="container">
-                <div className="row">
-                    <div className="col-12 mt-5">
+            <div className="container-fluid p-0 m-0">
+                <div className="row g-0">
+                    <div className="col-12">
                         <Carousel data={props.region[0].gallery} name={"region"} size={"50vh"}/>
                     </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row">
                     <div className="col-12">
                         <h2 className="my-5">{props.region[0].title}</h2>
                         <p>{props.region[0].description}</p>
