@@ -93,6 +93,7 @@ function Search(props) {
             <div>
                 <div className="input-group flex-column flex-lg-row">
                     <button type="button"
+                            style={{minWidth:'250px'}}
                             className="btn btn-dark p-2 p-lg-3 px-5 dropdown-toggle dropdown-toggle-split"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         <span className="visually-hidden">Toggle Dropdown</span>
