@@ -64,14 +64,16 @@ function Index(props) {
                     />
                     }
                 </div>
-                <div className="row justify-content-center g-0">
+                <div className="row justify-content-center g-3">
                     {pagination.map((l,k) => (
-                        <div className="card col-10 col-md-5 col-xl-3 m-3" key={k} style={{height:"350px"}}>
-                            <Link href={"/location/"+l._id}>
-                                <a className={"text-decoration-none"} >
-                                    <Cards data={l} name={"locations"}/>
-                                </a>
-                            </Link>
+                        <div className="col-10 col-md-5 col-xl-4" key={k} >
+                            <div className="card" style={{height:"350px"}}>
+                                <Link href={"/location/"+l._id}>
+                                    <a className={"text-decoration-none"} >
+                                        <Cards data={l} name={"locations"}/>
+                                    </a>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>
