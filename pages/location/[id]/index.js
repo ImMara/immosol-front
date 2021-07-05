@@ -144,6 +144,16 @@ function Index(props) {
                         }
                     </div>
 
+                    <div className="col-12 p-5 rounded-3 shadow d-flex flex-wrap justify-content-center">
+                        {
+                            location.gallery.map(i => (
+                                <a href={`https://marastudio.xyz/images/locations/gallery/${i}`} target="_blank">
+                                    <img src={`https://marastudio.xyz/images/locations/gallery/${i}`} className={"mx-2"} style={{ height:"150px" , width:"200px" , objectFit:"cover"}} />
+                                </a>
+                            ))
+                        }
+                    </div>
+
                     <div className="d-flex mt-3 py-3">
                         <Link href="/location">
                             <a className="btn btn-info text-white shadow" >Location</a>

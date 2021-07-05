@@ -110,7 +110,7 @@ function Index(props) {
                         </div>
                     </div>
 
-                    <div className="col-12 col-lg-6 mt-5 pt-1 d-flex flex-column">
+                    <div className="col-12 col-lg-6 mt-5 d-flex flex-column">
 
                         <div className="p-3 shadow rounded-3">
                             <h3 className="mb-3">Contact</h3>
@@ -140,6 +140,16 @@ function Index(props) {
                                     <h5 className="mt-3 text-info mx-3"><strong>{ vente.cost }$</strong></h5>
                                 </div>
                             )
+                        }
+                    </div>
+
+                    <div className="col-12 p-5 rounded-3 shadow d-flex flex-wrap justify-content-center">
+                        {
+                            vente.gallery.map(i => (
+                                <a href={`https://marastudio.xyz/images/ventes/gallery/${i}`} target="_blank">
+                                    <img src={`https://marastudio.xyz/images/ventes/gallery/${i}`} className={"mx-2 my-1"} style={{ height:"150px" , width:"200px" , objectFit:"cover"}} />
+                                </a>
+                            ))
                         }
                     </div>
 
