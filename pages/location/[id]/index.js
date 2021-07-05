@@ -44,7 +44,7 @@ function Index(props) {
                                 location.sold === "Disponible" ? (
                                     <span className="badge bg-info mx-1 p-2">Disponible</span>
                                 ) : (
-                                    <span className="badge bg-danger mx-1 p-2">Vendus</span>
+                                    <span className="badge bg-danger mx-1 p-2">Vendu</span>
                                 )
                             }
                             <span className="badge bg-info mx-1 p-2">{location.type}</span>
