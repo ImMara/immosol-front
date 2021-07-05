@@ -109,9 +109,9 @@ function Search(props) {
                     <ul className={"dropdown-menu"} aria-labelledby="dropdownMenuClickableInside">
                         {pagination.map((d,k) => (
                             <li key={k}>
-                                <a className={"dropdown-item"} href={ "/"+ (d.cost?"vente/"+d._id : "location/"+d._id) }>
+                                <a className={"dropdown-item"} href={ "/"+ (d.sold?"vente/"+d._id : "location/"+d._id) }>
                                     {d.title}
-                                    <span className="badge ms-1 bg-secondary">{d.cost?"Vente":"Location"}</span>
+                                    <span className="badge ms-1 bg-secondary">{d.sold?"Vente":"Location"}</span>
                                 </a>
                             </li>
                         ))}
