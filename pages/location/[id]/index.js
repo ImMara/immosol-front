@@ -4,6 +4,7 @@ import Carousel from "../../../components/carousel/Carousel";
 import {getLocation} from "../../../actions";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import nl2br from "react-nl2br";
 
 function Index(props) {
     const router = useRouter()
@@ -106,7 +107,7 @@ function Index(props) {
 
                         <div className="mt-3 px-3">
                             <h5>Description : </h5>
-                            <p>{location.description}</p>
+                            <p>{nl2br(location.description)}</p>
                         </div>
 
                     </div>

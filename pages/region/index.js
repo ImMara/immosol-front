@@ -2,6 +2,7 @@ import React from 'react';
 import Head from "../../components/head/Head";
 import Carousel from "../../components/carousel/Carousel";
 import {getRegion} from "../../actions";
+import nl2br from "react-nl2br";
 
 function Index(props) {
     return (
@@ -18,7 +19,7 @@ function Index(props) {
                 <div className="row">
                     <div className="col-12">
                         <h2 className="my-5">{props.region[0].title}</h2>
-                        <p>{props.region[0].description}</p>
+                        <p>{ nl2br(props.region[0].description)}</p>
                     </div>
                     <hr className={"my-5"}/>
                     <div className="col-12 text-center">

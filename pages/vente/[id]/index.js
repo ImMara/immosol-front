@@ -4,6 +4,7 @@ import Carousel from "../../../components/carousel/Carousel";
 import {useRouter} from "next/router";
 import {getVente} from "../../../actions";
 import Link from 'next/link';
+import nl2br from "react-nl2br";
 
 function Index(props) {
 
@@ -105,7 +106,7 @@ function Index(props) {
 
                         <div className="mt-5 px-3">
                             <h5 >Description : </h5>
-                            <p>{ vente.description }</p>
+                            <p>{ nl2br(vente.description) }</p>
                         </div>
                     </div>
 
