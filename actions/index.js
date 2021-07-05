@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://vps-447d73c6.vps.ovh.net'
+const BASE_URL = 'https://marastudio.xyz'
 
 export const getLocations = () =>{
     return axios
